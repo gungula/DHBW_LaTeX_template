@@ -1,0 +1,18 @@
+% !TeX root = ../dokumentation.tex
+\setpagestylefoot
+\renewcommand{\thefigure}{A\arabic{figure}}
+\renewcommand\thelstlisting{A\arabic{lstlisting}}
+\renewcommand\thetable{A\arabic{table}}
+
+% Nummer des Inhaltes mit \setcounter{figure}{"`Number"'} (figure, lstlisting or table) ändern wenn nötig
+
+% Quellenverzeichnis nach Literatur und Weblinks trennen
+%\printbibliography[heading=subbibintoc,title={Literatur},nottype=online]
+%\printbibliography[heading=subbibintoc,title={Weblinks},type=online]
+
+% Quellenverzeichnis nicht trennen
+\ifliteratur
+    \printbibliography
+\fi
+
+\addchap{\langanhang}

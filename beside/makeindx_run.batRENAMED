@@ -1,0 +1,4 @@
+makeindex -s dokumentation.ist -t dokumentation.alg -o dokumentation.acr dokumentation.acn
+makeindex -s dokumentation.ist -t dokumentation.glg -o dokumentation.gls dokumentation.glo
+makeindex -s dokumentation.ist -t dokumentation.slg -o dokumentation.syi dokumentation.syg
+pause

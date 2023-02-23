@@ -1,0 +1,69 @@
+\chapter{Lorem Ipsum}
+Dies ist die erste Verwendung einer Beispielabkürzung: \ac{abs}.\\
+Dies ist die zweite Verwendung einer Beispielabkürzung: : \ac{abs}.\\
+Dies ist die provozierte vollständige Darstellung der Beispielabkürzung: \acf{abs}.
+
+% Bild einbinden und beschriften
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=3cm]{images/dhbw_de.pdf}
+    \caption{Beispielbeschriftung}
+\end{figure}
+
+
+% Tabelle mit Strich über und unter der obersten Zeile 
+\begin{table}[htbp]         % präferierte Positionsreihenfolge (here, top, bottom, page)
+\begin{tabular}{lcl}        % Positionierung der einzelnen Spalten (left, center, right)
+	\hline                  % Strich über Tabelle
+	\textbf{Spalte 1}   & \textbf{Spalte 2} & \textbf{Spalte 3} \\ \hline    % Strich unter erster Zeile; \textbf = fetter Text
+	lorem               & ipsum             & lorem ipsum       \\
+	ipsum               & lorem             & ipsum lorem
+\end{tabular}
+\label{tabellenname}
+\caption{Beispieltabelle, \cite{lorem}}
+\end{table}
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. \cite{lorem} 
+
+\newpage
+\begin{lstlisting}[caption=Dies ist ein Listing,label=lstcode]
+while(working)
+{
+    coffee.drink();
+    work.execute();
+    if(coffee.isEmpty())
+    {
+        if(coffeePot.isEmpty())
+            coffeePot.brew();
+        coffee.refill();
+    }
+}
+Write('Textausgabe');
+\end{lstlisting}  
+
+
+% Einbindung (mathematischer) Symbole mit $$
+% Zentrierung via \begin{center}
+\begin{center}
+2 $\ast$ 0,1 = 0,2 $\rightarrow$ Ziffer: 0 \\
+2 $\ast$ 0,2 = 0,4 $\rightarrow$ Ziffer: 0 \\
+2 $\ast$ 0,4 = 0,8 $\rightarrow$ Ziffer: 0 \\
+2 $\ast$ 0,8 = 1,6 $\rightarrow$ Ziffer: 1 \\
+2 $\ast$ 0,6 = 1,2 $\rightarrow$ Ziffer: 1 \\
+2 $\ast$ 0,2 = 0,4 $\rightarrow$ Ziffer: 0 \\
+\end{center}
+
+\section{Lorem}
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+
+\subsection{ipsum}
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+
+%% Aufzählung
+\begin{itemize}
+    \item erster Stichpunkt
+    \item zweiter Stichpunkt
+\end{itemize}
+
+
+ 
