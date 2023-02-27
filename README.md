@@ -1,4 +1,8 @@
-# LaTeX_template_general
+Dies ist ein Template von und für DHBW-Studenten nach den aktuellen Anforderungen für wissenschaftliche Arbeiten. Es handelt sich dabei um kein offizielles Dokument der DHBW!
+
+Bei Fragen oder Problemen dürft ihr gern ein Issue öffnen.
+______________________________
+# DHBW_LaTeX_template
 
 **Ordner additionalPackages, beside und lang müssen i. d. R. nicht bearbeitet werden.**
 Je nach verwendeter Textverarbeitungsumgebung muss ggf. die source-Datei manuell eingestellt werden, da sonst kein build erfolgen kann. 
