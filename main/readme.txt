@@ -5,8 +5,8 @@ Verwendung des Templates - Grundeinstellungen
 einstellungen.tex:
 - Sprache de oder en
 - Eintragen sämtlicher persönlicher sowie projektbezogener Daten
-- Auswahl zu enthaltener Seiten (bspw. Sperrvermerk ja / nein)
-- grüner / gelber / roter Punkt (je nach Vertraulichkeit)
+- Auswahl zu enthaltener Seiten (bspw. Sperrvermerk ja / nein, Listing-Verzeichnis ja / nein, ...)
+- grüner / gelber / roter Punkt (je nach Vertraulichkeit bzw. Sperrvermerk)
 
 deckblatt.tex:
 - Einfügen des Logos des Partnerunternehmens für das Deckblatt (2x) [Bilddatei in Ordner "images" ablegen!]
