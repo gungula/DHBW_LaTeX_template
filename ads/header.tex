@@ -34,6 +34,9 @@
 }
 \newcommand{\langstr}[1]{\einstellung{lang#1}}
 
+% Neustart Kapitelnummerierung bei mehreren Parts
+\counterwithin*{chapter}{part}
+
 % Flag für die Selbstständigkeitserklärung, Default: true
 \newif\ifselbsterkl
 \selbsterklfalse
