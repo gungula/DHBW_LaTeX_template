@@ -34,7 +34,8 @@ Achtung: Bei DHBW-Arbeiten nicht tiefer als subsection gehen!
 - beinhaltet Abkürzungen für das Abkürzungsverzeichnis -> Erklärung in Datei
 
 ### bibliography.bib:
-Quellenverzeichnis: Bestenfalls kann ein separates Literaturverwaltungsprogramm wie Zotero oder jabref verwendet werden --> von dort kann eine bibliography.bib exportiert und ins Projekt eingefügt werden, erleichtert den Umgang mit Quellen.
+Quellenverzeichnis: Bestenfalls kann ein separates Literaturverwaltungsprogramm wie Zotero oder jabref verwendet werden --> von dort kann eine bibliography.bib exportiert und ins Projekt eingefügt werden, erleichtert den Umgang mit Quellen. <br>
+Offizielle Dokumentation von [BibLaTeX](https://mirror.informatik.hs-fulda.de/tex-archive/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf#9)
 
 ### abstract.tex
 Je nach Sprachauswahl wird die deutsche Kurzfassung oder der englische abstract ausgegeben.
