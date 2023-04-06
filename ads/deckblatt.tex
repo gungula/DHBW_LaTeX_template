@@ -1,0 +1,74 @@
+%!TEX root = ../dokumentation.tex
+
+\begin{titlepage}
+    \begin{longtable}{p{8.2cm} p{5.4cm}}
+    %     {
+    %     \raisebox{\ht\strutbox-\totalheight}{
+    %         \iflang{de}{
+    %         	\begin{textblock*}{188mm}(0mm,23mm)
+  	 %                \includegraphics[width=88mm]{-todo-}   % Logo der Partnerfirma auf dem Deckblatt
+    %         	\end{textblock*}
+    %         }
+    %         \iflang{en}{
+    %             \begin{textblock*}{188mm}(0mm,21mm)
+  	 %                \includegraphics[width=95mm]{-todo-}   % Logo der Partnerfirma auf dem Deckblatt 
+  	 %            \end{textblock*}
+    %         }
+    %     }
+    % } 
+    % &
+    {
+        \raisebox{\ht\strutbox-\totalheight}{
+            \iflang{de}{\includegraphics[height=2.5cm]{dhbw_de}}
+            \iflang{en}{\includegraphics[height=2.5cm]{dhbw_en}}
+        }
+    }
+    \end{longtable}
+	
+    \enlargethispage{20mm}
+	
+	\begin{center}
+		\begin{spacing}{2,5}
+			\vspace*{12mm}	{\huge\textbf \titel }\\
+			\vspace*{5mm}
+		\end{spacing}
+		
+		\begin{tikzpicture}		
+			\ifreddot
+				\tikz\draw[fill=red,draw=red](-4,2) circle (1.4cm);
+			\else
+				\ifyellowdot
+					\tikz\draw[fill=yellow,draw=yellow](-4,2) circle (1.4cm);
+				\else
+					\tikz\draw[fill=green,draw=green](-4,2) circle (1.4cm);
+				\fi
+			\fi
+		\end{tikzpicture}
+		\vspace{-1.4cm}
+		\\
+
+		\vspace*{12mm}	{\LARGE\textbf \arbeit }\\
+	
+	%	\vspace*{12mm}	\langdeckblattabschlusshinleitung\\
+		\vspace*{2mm}	\abschluss\\
+		\vspace*{10mm}	\langartikelstudiengang{} \langstudiengang{} \studiengang\\
+    	\vspace*{5mm}	\langanderdh{} \dhbw\\\langcampus{} \campus\\
+		\vspace*{12mm}	\langvon\\
+		\vspace*{5mm}	{\large\textbf \autor}\\
+		\vspace*{10mm}	\datumAbgabe\\
+	\end{center}
+
+	\vfill
+	\begin{spacing}{1.2}
+	\begin{tabbing}
+		mmmmmmmmmmmmmmmmmmmmmmmmmm             \= \kill
+		\textbf{\langdbbearbeitungszeit}       \>  \zeitraum\\
+		\textbf{\langdbmatriknr, \langdbkurs}  \>  \matrikelnr, \kurs\\
+		\textbf{\langdbfirma}                  \>  \firma, \firmenort\\
+		\textbf{\langdbbetreuer}               \>  \betreuer\\
+		\ifreviewer
+			\textbf{\langdbgutachter}              \>  \gutachter\\
+		\fi
+	\end{tabbing}
+	\end{spacing}
+\end{titlepage}

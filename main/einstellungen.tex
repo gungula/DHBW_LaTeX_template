@@ -1,0 +1,95 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                   Einstellungen
+% Hier können alle relevanten Einstellungen für diese Arbeit gesetzt werden.
+% Dazu gehören Angaben u.a. über den Autor sowie Formatierungen.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sprache %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Aktuell sind Deutsch und Englisch unterstützt.
+%% Es werden nicht nur alle vom Dokument erzeugten Texte in
+%% der entsprechenden Sprache angezeigt, sondern auch weitere
+%% Aspekte angepasst, wie z.B. die Anführungszeichen und
+%% Datumsformate.
+\setzesprache{en} % de oder en
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Angaben  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Die meisten der folgenden Daten werden auf dem Deckblatt angezeigt, einige 
+%% auch im weiteren Verlauf des Dokuments.
+\setzematrikelnr{-todo-}
+\setzekurs{-todo-}      % Kursbezeichnung an der DHBW
+\setzetitel{-todo-}     % Titel der (Projekt-)Arbeit
+\setzedatumAnfang{-todo-}
+\setzedatumAbgabe{-todo-}
+\setzefirma{-todo-}
+\setzefirmenort{-todo-}
+\setzeabgabeort{-todo-} % für Unterschriftenfeld
+\setzeabschluss{\"uber die Praxisphasen des ersten Studienjahres} % ersten, zweiten, dritten Studienjahres, bei BA leer lassen
+\setzestudiengang{-todo-}
+\setzedhbw{-todo-}
+\setzecampus{-todo-}
+\setzebetreuer{-todo-}
+\setzegutachter{-todo-}
+\setzezeitraum{-todo-}
+\setzearbeit{-todo-}    % bspw. Projektarbeit T1000
+\setzeautor{-todo-}
+\setzesemester{-todo-}
+\setzestudienrichtung{-todo-}
+\setzejahrgang{-todo-}
+\setzeabteilung{-todo-}
+\setzestandort{-todo-}
+
+% jeweilige Zeilen auskommentieren oder zu \....false ändern, falls entsprechendes Objekt nicht benötigt wird
+\inhalttrue
+\selbsterkltrue
+\sperrvermerktrue
+\abkverztrue                
+\abbverztrue               
+\tableverztrue            
+\listverztrue              
+\formelverztrue 
+\abstracttrue          
+\bothabstractsfalse        
+\appendixtrue               
+\literaturtrue              % auskommentieren oder ändern zu \literaturfalse, wenn kein Literaturverzeichnis gewünscht ist (\appendixtrue muss gesetzt sein!)
+\refWithPagesfalse          % ändern zu \refWithPagestrue, wenn die Seitenzahl bei Verweisen auf Kapitel eingefügt werden sollen
+\reviewertrue				% Zeile für Gutachter auf Deckblatt
+
+% Angabe des roten/gelben Punktes auf dem Titelblatt zur Kennzeichnung der Vertraulichkeitsstufe.
+% Mögliche Angaben sind \yellowdottrue und \reddottrue. Werden beide angegeben, wird der rote Punkt gezeichnet.
+% Wird keines der Kommandos angegeben erscheint ein grüner Punkt (s. Deckblatt.tex)
+%\yellowdottrue
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Literaturverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bei Fehlern während der Verarbeitung bitte in ads/header.tex bei der
+%% Einbindung des Pakets biblatex (ungefähr ab Zeile 110,
+%% einmal für jede Sprache), biber in bibtex ändern.
+\newcommand{\ladeliteratur}{%
+\addbibresource{bibliographie.bib}
+%\addbibresource{weitereDatei.bib}
+}
+
+%% Zitierstil
+%% siehe: http://ctan.mirrorcatalogs.com/macros/latex/contrib/biblatex/doc/biblatex.pdf (3.3.1 Citation Styles)
+%% mögliche Werte z.B numeric-comp, alphabetic, authoryear
+\setzezitierstil{alphabetic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Layout %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Verschiedene Schriftarten
+% laut nag Warnung: palatino obsolete, use mathpazo, helvet (option scaled=.95), courier instead
+\setzeschriftart{lmodern} % palatino oder goudysans, lmodern, libertine
+
+%% Abstand vor Kapitelüberschriften zum oberen Seitenrand
+\setzekapitelabstand{20pt}
+
+%% Spaltenabstand
+\setzespaltenabstand{10pt}
+
+%% Zeilenabstand innerhalb einer Tabelle
+\setzezeilenabstand{1.5}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% eigene Kommandos %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newcommand{\cmd}{{\Dieser Text erscheint bei Eingabe von \cmd im Text.}}}

@@ -1,0 +1,463 @@
+%!TEX root = ../dokumentation.tex
+
+\RequirePackage[l2tabu, orthodox]{nag}	% weist in Commandozeile bzw. log auf veraltete LaTeX Syntax hin
+
+\documentclass[%
+    pdftex,
+    oneside,			% Einseitiger Druck.
+    12pt,				% Schriftgroesse
+    parskip=half,		% Halbe Zeile Abstand zwischen Absätzen.
+    %topmargin = 10pt,	% Abstand Seitenrand (Std:1in) zu Kopfzeile [laut log: unused]
+    headheight = 33pt,	% Höhe der Kopfzeile
+    %headsep = 30pt,	% Abstand zwischen Kopfzeile und Text Body  [laut log: unused]
+    headsepline,		% Linie nach Kopfzeile.
+    footsepline,		% Linie vor Fusszeile.
+    %footheight = 16pt,	% Höhe der Fusszeile
+    abstracton,		    % Abstract Überschriften
+    DIV=calc,		    % Satzspiegel berechnen
+    BCOR=8mm,		    % Bindekorrektur links: 8mm
+    headinclude=false,	% Kopfzeile nicht in den Satzspiegel einbeziehen
+    footinclude=false,	% Fußzeile nicht in den Satzspiegel einbeziehen
+    listof=totoc,		% Abbildungs-/ Tabellenverzeichnis im Inhaltsverzeichnis darstellen
+    toc=bibliography,	% Literaturverzeichnis im Inhaltsverzeichnis darstellen
+]{scrreprt}	% Koma-Script report-Klasse, fuer laengere Bachelorarbeiten alternativ auch: scrbook
+
+% Einstellungen laden
+\usepackage{xstring}
+\usepackage{ifpdf}
+\usepackage{ifluatex}
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\newcommand{\einstellung}[1]{%
+    \expandafter\newcommand\csname #1\endcsname{}
+    \expandafter\newcommand\csname setze#1\endcsname[1]{\expandafter\renewcommand\csname#1\endcsname{##1}}
+}
+\newcommand{\langstr}[1]{\einstellung{lang#1}}
+
+% Flag für die Selbstständigkeitserklärung, Default: true
+\newif\ifselbsterkl
+\selbsterklfalse
+
+
+% Flag für roten Vertraulichkeitspunkt, default: false
+\newif\ifreddot
+\reddotfalse
+
+% Flag für gelben Vertraulichkeitspunkt, default: false
+\newif\ifyellowdot
+\yellowdotfalse
+
+% Flag für das Unterschriftenblatt, default: false
+\newif\ifunterschriftenblatt
+\unterschriftenblattfalse
+
+% Flag für Einfügen der Seitenzahl bei Verweis auf Kapitel/Abschnitt, default: false
+\newif\ifrefWithPages
+\refWithPagesfalse
+
+% Flag für Einfügen der Abstracts in deutsch und englisch, default: false
+\newif\ifbothabstracts
+\bothabstractsfalse
+
+% Flag für Einfügen des Abkürzungsverzeichnis
+\newif\ifabkverz
+\abkverzfalse
+
+% Flag für Einfügen des Abbildungsverzeichnisses
+\newif\ifabbverz
+\abbverzfalse
+
+% Flag für Einfügen des Formelverzeichnisses
+\newif\ifformelverz
+\formelverzfalse
+
+% Flag für Einfügen des Listingverzeichnisses
+\newif\iflistverz
+\listverzfalse
+
+% Flag für Einfügen des Tabellenverzeichnisses
+\newif\iftableverz
+\tableverzfalse
+
+% Flag für Einfügen des Sperrvermerks
+\newif\ifsperrvermerk
+\sperrvermerkfalse
+
+% Flag für Einfügen des Abstracts
+\newif\ifabstract
+\abstractfalse
+
+% Flag für Anhang
+\newif\ifappendix
+\appendixfalse
+
+% Flag für Literaturverzeichnis
+\newif\ifliteratur
+\literaturfalse
+
+% Flag für Inhaltsverzeichnis
+\newif\ifinhalt
+\inhaltfalse
+
+% Flag für Reviewer
+\newif\ifreviewer
+\reviewerfalse
+
+\input{ads/einstellungen_liste} % verfügbare Einstellungen
+\input{main/einstellungen}      % lese Einstellungen
+\input{lang/strings}            % verfügbare Strings
+\input{lang/\sprache}           % Übersetzung einlesen
+
+%\lstset{language=Matlab}
+\usepackage{pdfpages}           % pdf-Seiten einbinden
+
+
+%% Farben (Angabe in HTML-Notation mit großen Buchstaben)
+\newcommand{\ladefarben}{%
+	\definecolor{LinkColor}{HTML}{00007A}
+	\definecolor{ListingBackground}{HTML}{E6E6E6}
+}
+
+%% Mathematikpakete benutzen (Pakete aktivieren)
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+
+%% Programmiersprachen Highlighting (Listings)
+\newcommand{\listingsettings}{%
+	\lstset{%
+		language=C++,			% Standardsprache des Quellcodes
+		%numbers=left,			% Zeilennummern links
+		%stepnumber=1,			% Jede Zeile nummerieren.
+		%numbersep=5pt,			% 5pt Abstand zum Quellcode
+		%numberstyle=\tiny,		% Zeichengrösse 'tiny' für die Nummern.
+		breaklines=true,		% Zeilen umbrechen wenn notwendig.
+		breakautoindent=true,	% Nach dem Zeilenumbruch Zeile einrücken.
+		postbreak=\space,		% Bei Leerzeichen umbrechen.
+		tabsize=2,				% Tabulatorgrösse 2
+		basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
+		showspaces=false,		% Leerzeichen nicht anzeigen.
+		showstringspaces=false,	% Leerzeichen auch in Strings ('') nicht anzeigen.
+		extendedchars=true,		% Alle Zeichen vom Latin1 Zeichensatz anzeigen.
+		captionpos=b,			% sets the caption-position to bottom
+		backgroundcolor=\color{ListingBackground}, % Hintergrundfarbe des Quellcodes setzen.
+		xleftmargin=0pt,		% Rand links
+		xrightmargin=0pt,		% Rand rechts
+		frame=single,			% Rahmen an
+		frameround=ffff,
+		rulecolor=\color{darkgray},	% Rahmenfarbe
+		%fillcolor=\color{ListingBackground},
+		keywordstyle=\color[rgb]{0.133,0.133,0.6},
+		commentstyle=\color[rgb]{0.133,0.545,0.133},
+		stringstyle=\color[rgb]{0.627,0.126,0.941},
+        aboveskip=1.5em,
+	}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Kopf-/Fußzeilenwechsel %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Kopf- und Fußzeilen von Verzeichnissen
+\setlength{\headheight}{40pt}
+\newcommand{\setpagestylehead}{
+    \fancypagestyle{plain}{%
+        \fancyhf{}
+        \fancyhead[L]{\vspace{0.5cm}\small \langkopfz}
+        \fancyhead[R]{
+            \hspace{2.0cm}
+            \iflang{de}{
+				\begin{textblock*}{188mm}(-3mm,9mm) %(-50mm,9mm) sind die korrekten Einstellungen, falls zusätzlich ein Firmenlogo in die Kopfzeile eingefügt wird         	
+            	\includegraphics[height=1.4cm]{images/dhbw_de}
+            	\end{textblock*}
+            }
+            \iflang{en}{
+            	\begin{textblock*}{188mm}(-4mm,8mm) %(-34mm,7mm) sind die korrekten Einstellungen, falls zusätzlich ein Firmenlogo in die Kopfzeile eingefügt wird        	
+            	\includegraphics[height=1.2cm]{images/dhbw_en}
+            	\end{textblock*}
+            }
+            %\iflang{de}{
+		%		\begin{textblock*}{188mm}(0mm,0mm)            	
+            	%\includegraphics[height=2.7cm]{-todo-}  % Logo der Partnerfirma in Kopfzeile von Verzeichnissen
+            %	\end{textblock*}
+            %}
+            %\iflang{en}{
+            %	\begin{textblock*}{188mm}(0mm,0mm)            	
+            	%\includegraphics[height=2.2cm]{-todo-}  % Logo der Partnerfirma in Kopfzeile von Verzeichnissen
+            %	\end{textblock*}
+            %}
+        }
+        \fancyfoot[L]{
+            \noindent{\tiny \langfussz\\
+                \begin{tabular*}{16cm}{@{\extracolsep{\fill}}l>{\raggedleft}p{8cm}}
+                    {\tiny \langstand: \today} & 
+                    {\tiny \langseite\ \thepage\ \langseitevon\ \pageref*{endOfRomanNumbering}\vspace{1cm}}\tabularnewline
+                \end{tabular*}
+            }
+        }
+    }
+    \pagestyle{plain}
+    \pagenumbering{roman}
+}
+
+%% Kopf- und Fußzeilen von content-Seiten
+\newcommand{\setpagestylecontent}{
+\fancypagestyle{plain}{%
+        \fancyhf{}
+        \fancyhead[L]{\vspace{0.5cm}\small \langkopfz}
+        \fancyhead[R]{
+            \hspace{2.0cm}
+            \iflang{de}{
+				\begin{textblock*}{188mm}(-3mm,9mm) %(-50mm,9mm) sind die korrekten Einstellungen, falls zusätzlich ein Firmenlogo in die Kopfzeile eingefügt wird         	
+            	\includegraphics[height=1.4cm]{images/dhbw_de}
+            	\end{textblock*}
+            }
+            \iflang{en}{
+            	\begin{textblock*}{188mm}(-4mm,8mm) %(-34mm,7mm) sind die korrekten Einstellungen, falls zusätzlich ein Firmenlogo in die Kopfzeile eingefügt wird        	
+            	\includegraphics[height=1.2cm]{images/dhbw_en}
+            	\end{textblock*}
+            }
+            %\iflang{de}{
+		%		\begin{textblock*}{188mm}(0mm,0mm)            	
+            	%\includegraphics[height=2.7cm]{-todo-}  % Logo der Partnerfirma in Kopfzeile von Verzeichnissen
+            %	\end{textblock*}
+            %}
+            %\iflang{en}{
+            %	\begin{textblock*}{188mm}(0mm,0mm)            	
+            	%\includegraphics[height=2.2cm]{-todo-}  % Logo der Partnerfirma in Kopfzeile von Verzeichnissen
+            %	\end{textblock*}
+            %}
+        }
+        \fancyfoot[L]{
+            \noindent{\tiny \langfussz\\
+                \begin{tabular*}{16cm}{@{\extracolsep{\fill}}l>{\raggedleft}p{8cm}}
+                    {\tiny \langstand: \today} & 
+                    {\tiny \langseite\ \thepage\ \langseitevon\ \pageref*{endOfArabicNumbering}\vspace{1cm}}\tabularnewline
+                \end{tabular*}
+            }
+        }
+    }
+    \pagestyle{plain}
+    \pagenumbering{arabic}
+}
+
+%% Kopf- und Fußzeilen von Anhängen 
+\newcommand{\setpagestylefoot}{
+\fancypagestyle{plain}{%
+        \fancyhf{}
+        \fancyhead[L]{\vspace{0.5cm}\small \langkopfz}
+        \fancyhead[R]{
+            \hspace{2.0cm}
+            \iflang{de}{
+				\begin{textblock*}{188mm}(-50mm,9mm)            	
+            	\includegraphics[height=1.4cm]{images/dhbw_de}
+            	\end{textblock*}
+            }
+            \iflang{en}{
+            	\begin{textblock*}{188mm}(-34mm,7mm)            	
+            	\includegraphics[height=1.2cm]{images/dhbw_en}
+            	\end{textblock*}
+            }
+            \iflang{de}{
+				\begin{textblock*}{188mm}(0mm,0mm)            	
+                %\includegraphics[height=2.7cm]{-todo-}     % Logo der Partnerfirma in Kopfzeile von Anhängen
+            	\end{textblock*}
+            }
+            \iflang{en}{
+            	\begin{textblock*}{188mm}(0mm,0mm)            	
+            	%\includegraphics[height=2.2cm]{-todo-}     % Logo der Partnerfirma in Kopfzeile von Anhängen
+            	\end{textblock*}
+            }
+        }
+        \fancyfoot[L]{
+            \noindent{\tiny \langfussz\\
+                \begin{tabular*}{16cm}{@{\extracolsep{\fill}}l>{\raggedleft}p{8cm}}
+                    {\tiny \langstand: \today} & 
+                    {\tiny \langseite\ \thepage\ \langseitevon\ \pageref*{LastPage}\vspace{1cm}}\tabularnewline
+                \end{tabular*}
+            }
+        }
+    }
+    \pagestyle{plain}
+    \pagenumbering{Alph}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Einstellung der Sprache des Paketes Babel und der Verzeichnisüberschriften
+
+\iflang{de}{
+    \usepackage[english, ngerman]{babel}
+    \selectlanguage{ngerman}
+}
+\iflang{en}{
+    \usepackage[ngerman, english]{babel}
+    \selectlanguage{english}
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[margin=2.5cm,foot=1cm,top=3cm,bottom=3cm]{geometry}	% Seitenränder und Abstände
+\usepackage[activate]{microtype} %Zeilenumbruch und mehr
+\usepackage[onehalfspacing]{setspace}
+\usepackage{makeidx}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+\usepackage{longtable}
+\usepackage{enumitem}	% mehr Optionen bei Aufzählungen
+\usepackage{graphicx}
+\usepackage{xcolor} 	% für HTML-Notation
+\usepackage{float}
+\usepackage{array}
+\usepackage{calc}		% zum Rechnen (Bildtabelle in Deckblatt)
+\usepackage[right]{eurosym}
+\usepackage{wrapfig}
+\usepackage{pgffor}     % für automatische Kapiteldateieinbindung
+\usepackage[perpage, hang, multiple, stable]{footmisc} % Fussnoten
+\usepackage{acronym}
+\usepackage[absolute]{textpos}
+%\usepackage[printonlyused, footnote]{acronym} % falls gewünscht kann die Option footnote eingefügt werden, dann wird die Erklärung nicht inline sondern in einer Fußnote dargestellt
+\usepackage{scrhack} % in Kombination mit listings-Package kommt es zu Warnings, dieses Paket verhindert die Warnings! Ggf. auskommentieren und die Warnings akzeptieren falls Verzeichnisse nicht so dargestellt werden wie gewünscht
+\usepackage{listings} % Code-Listings
+%\usepackage[numbered, framed]{matlab-prettifier}
+\usepackage[framed]{matlab-prettifier} % .sty-Datei muss vorhanden sein! Kann auskommentiert werden, falls keine Matlab-Listings in der Arbeit enthalten sind.
+\usepackage{color, colortbl}  % Für Highlighten der Tabellenzeilen
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+
+% eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
+% Kommentare werden rot gedruckt). Wird \% vor excludecomment{k} entfernt,
+% werden keine Kommentare mehr gedruckt.
+\usepackage{comment}
+\specialcomment{k}{\begingroup\color{red}}{\endgroup}
+%\excludecomment{k}
+
+
+%%%%%% Konfiguration %%%%%%
+%% Anwenden der Einstellungen
+\usepackage{\schriftart}
+\ladefarben{}
+
+% Titel, Autor und Datum
+\title{\titel}
+\author{\autor}
+\date{\datum}
+
+%\usepackage[list=true]{subcaption}
+
+% PDF Einstellungen
+\usepackage[%
+    pdftitle={\titel},
+    pdfauthor={\autor},
+    pdfsubject={\arbeit},
+    pdfcreator={pdflatex, LaTeX with KOMA-Script},
+    pdfpagemode=UseOutlines, 		% Beim Öffnen Inhaltsverzeichnis anzeigen
+    pdfdisplaydoctitle=true, 		% Dokumententitel statt Dateiname anzeigen.
+    pdflang={\sprache}, 			% Sprache des Dokuments.
+]{hyperref}
+
+% (Farb-)Einstellungen für die Links im PDF
+\hypersetup{%
+    colorlinks=true, 		% Aktivieren von farbigen Links im Dokument
+    linkcolor=black, 	    % Farbe festlegen
+    citecolor=LinkColor,
+    filecolor=LinkColor,
+    menucolor=LinkColor,
+    urlcolor=LinkColor,
+    %linktocpage=true, 		% Nicht der Text sondern die Seitenzahlen in Verzeichnissen klickbar
+    linktoc=all,            % Seitenzahlen und Text klickbar
+    bookmarksnumbered=true 	% Überschriftsnummerierung im PDF Inhalt anzeigen.
+}
+% Workaround um Fehler in Hyperref, muss hier stehen bleiben
+\usepackage{bookmark} % nur ein latex-Durchlauf für die Aktualisierung von Verzeichnissen nötig
+
+% Schriftart in Captions etwas kleiner
+\addtokomafont{caption}{\small}
+
+\usepackage{subfig}
+
+% Literaturverweise (sowohl deutsch als auch englisch)
+\iflang{de}{%
+\usepackage[
+    backend=bibtex,		% empfohlen. Falls biber Probleme macht: bibtex
+    bibwarn=true,
+    bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
+    sortlocale=de_DE,
+    style=\zitierstil,
+]{biblatex}
+}
+\iflang{en}{%
+\usepackage[
+    backend=bibtex,		% empfohlen. Falls biber Probleme macht: bibtex
+    bibwarn=true,
+    bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
+    sortlocale=en_US,
+    style=\zitierstil,
+]{biblatex}
+}
+
+
+\ladeliteratur{}
+%\bibliography{bibliographie}
+
+% Glossar
+\usepackage[nonumberlist,toc]{glossaries}
+\usepackage{blindtext} % Blindtext-Package. Common Usage: \blindtext für einzelnen Abschnitt, \Blindtext für mehrere Abschnitte
+
+
+%%%%%% Additional settings %%%%%%
+% Hurenkinder und Schusterjungen verhindern
+\clubpenalty = 10000 % schließt Schusterjungen aus (Seitenumbruch nach der ersten Zeile eines neuen Absatzes)
+\widowpenalty = 10000 % schließt Hurenkinder aus (die letzte Zeile eines Absatzes steht auf einer neuen Seite)
+\displaywidowpenalty=10000
+
+\setcounter{biburlnumpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\setcounter{biburllcpenalty}{100}
+
+% Bildpfad
+\graphicspath{{images/}}
+
+% Einige häufig verwendete Sprachen
+\lstloadlanguages{PHP,Python,Java,C,C++,bash}
+\listingsettings{}
+% Umbennung des Listings
+\renewcommand\lstlistingname{\langlistingname}
+\renewcommand\lstlistlistingname{\langlistlistingname}
+\def\lstlistingautorefname{\langlistingautorefname}
+
+% Abstände in Tabellen
+\setlength{\tabcolsep}{\spaltenabstand}
+\renewcommand{\arraystretch}{\zeilenabstand}
+
+\usepackage{xspace}
+\newcommand{\lastcontentpage}{}
+\usepackage{amsfonts}
+
+%\usetikzlibrary{shapes,arrows,calc}
+\usepackage{relsize}
+
+\usepackage{censor}
+
+\usepackage{eso-pic}
+
+
+%% Paket, um Textteile drehen zu können
+%\usepackage{rotating}
+%% Paket, um Seite im Querformat anzuzeigen
+%\usepackage{lscape}
+
+
+\ifrefWithPages
+    %RJG8FE: add a pageref to autoref whenever the referenced page is not the same as the current one
+    %        useful for printed documents without clickable hyperlinks
+    \AtBeginDocument{\let\oldautoref\autoref}
+    \AtBeginDocument{
+        \renewcommand{\autoref}[1]{%
+            \oldautoref{#1}%
+            \ifthenelse{\thepage=\pageref{#1}}% if current page number equals the referenced page number
+            {}% then add nothing
+            { (S. \pageref{#1})}% else add the text
+        }
+    }
+\fi
+
+\usepackage{amssymb} % Erweiterung der Symbole in Mathematikumgebung
+
+\iflang{de}{\usepackage{icomma}} % Europäisches Komma in Formeln
