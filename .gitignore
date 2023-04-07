@@ -9,3 +9,7 @@
 *.lot
 *.run.xml
 *.toc
+*.fdb_latexmk
+*.fls
+*.for
+*.synctex.gz

@@ -1,7 +1,40 @@
 Dies ist ein Template von und für DHBW-Studenten nach den aktuellen Anforderungen für wissenschaftliche Arbeiten. Es handelt sich dabei um kein offizielles Dokument der DHBW!
 
 Bei Fragen oder Problemen dürft ihr gern ein Issue öffnen.
-______________________________
+_____________________________
+# Betrieb mit angezeigter .pdf in VS Code
+1. Installieren der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
+
+
+2. LaTeX-recipe in settings.json (~/home/.config/Code - OSS/User/settings.json) anpassen: 
+
+``` 
+{
+    "latex-workshop.latex.recipes": [
+        {
+          "name": "latexmk",
+          "tools": [
+            "latexmk"
+          ]
+        },
+        {
+          "name": "pdflatex -> bibtex -> pdflatex * 2",
+          "tools": [
+            "pdflatex",
+            "bibtex",
+            "pdflatex",
+            "pdflatex"
+          ]
+        }
+      ]
+}
+``` 
+
+3. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
+
+4. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
+_______________________
+
 # DHBW_LaTeX_template
 
 **Ordner lang muss i. d. R. nicht bearbeitet werden.**
