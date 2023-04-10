@@ -3,10 +3,11 @@ Dies ist ein Template von und für DHBW-Studenten nach den aktuellen Anforderung
 Bei Fragen oder Problemen dürft ihr gern ein Issue öffnen.
 _____________________________
 # Betrieb mit angezeigter .pdf in VS Code
-1. Installieren der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
+1. Installation der Extension "Perl" (Language Server and Debugger for Perl)
 
+2. Installation der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
 
-2. LaTeX-recipe in settings.json (~/home/.config/Code - OSS/User/settings.json) anpassen: 
+3. LaTeX-recipe in settings.json (~/home/.config/Code - OSS/User/settings.json) anpassen: 
 
 ``` 
 {
@@ -30,9 +31,9 @@ _____________________________
 }
 ``` 
 
-3. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
+4. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
 
-4. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
+5. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
 _______________________
 
 # DHBW_LaTeX_template
