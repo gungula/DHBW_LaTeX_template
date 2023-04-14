@@ -17,3 +17,5 @@
 *.toc
 *.tps
 *.run.xml
+*.synctex(busy)
+*.synctex.gz
