@@ -35,7 +35,6 @@ _____________________________
 
 5. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
 _______________________
-
 # DHBW_LaTeX_template
 
 **Ordner lang muss i. d. R. nicht bearbeitet werden.**
@@ -115,9 +114,13 @@ Ablage sämtlicher im Dokument verwendeter Bilder. Dazu gehören sowohl Logos (D
 ### lang
 Nicht anfassen! Hier werden die einzelnen Strings, welche sich auf deutsch und englisch unterscheiden, festgelegt und ggf. übersetzt.
 
+### dokumentation.tex
+Dies ist die Source-Datei für die .pdf-Ausgabe. Hier muss i. d. R. nichts verändert werden.
+
+### cleand.cmd / clean.sh
+Diese Datei löscht bei Ausführung alle bei .pdf-Erstellung automatisch generierten, nicht benötigten files wie bspw. dokumentation.aux .
+
 ### main
 #### einstellungen.tex
 Hier werden sämtliche Einstellungen zu Form und Inhalt der Arbeit getroffen. Es werden Eigenschaften wie Sprachen oder anzuzeigende Verzeichnisse definiert als auch Eintragungen wie Name, Matrikelnummer, Titel der Arbeit etc. vorgenommen.
 
-### dokumentation.tex
-Dies ist die Source-Datei für die .pdf-Ausgabe. Hier muss i. d. R. nichts verändert werden.

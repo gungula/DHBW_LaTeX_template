@@ -1,0 +1,19 @@
+#!/bin/bash
+rm *.bak
+rm *.aux
+rm *.bbl
+rm *.bcf
+rm *-blx.bib
+rm *.blg
+rm *.fdb_latexmk
+rm *.fls
+rm *.for
+rm *.glo
+rm *.ist
+rm *.lof
+rm *.log
+rm *.lol
+rm *.lot
+rm *.toc
+rm *.tps
+rm *.run.xml
