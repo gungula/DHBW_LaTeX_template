@@ -13,9 +13,9 @@
 *.log
 *.lol
 *.lot
-*.pdf
 *.toc
 *.tps
 *.run.xml
 *.synctex(busy)
 *.synctex.gz
+dokumentation.pdf
