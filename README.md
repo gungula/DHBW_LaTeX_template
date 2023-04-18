@@ -3,8 +3,12 @@ Dies ist ein Template von und für DHBW-Studenten nach den aktuellen Anforderung
 Bei Fragen oder Problemen dürft ihr gern ein Issue öffnen.
 _____________________________
 # Betrieb mit angezeigter .pdf in VS Code
-1. Installation von Latex auf deiner Maschine
-Eine funktionierende Latexumgebung muss auf deinem System installiert sein.
+
+In Windows können die nachfolgend beschriebenen Extensions über VS Code installiert werden. <br>
+Die hier aufgeführten commands beziehen sich auf Linux-Systeme.
+
+### 1. Installation von LaTeX <br>
+Eine funktionierende LaTeX-Umgebung muss auf dem Zielsystem installiert sein.
 
 Ubuntu:
 ```sh
@@ -15,17 +19,17 @@ Arch:
 sudo pacman -S texlive-most
 ```
 
-2. Installation der Extension "Perl" (Language Server and Debugger for Perl)
+### 2. Installation der Extension "Perl" (Language Server and Debugger for Perl)
 ```sh
 code  --install-extension richterger.perl
 ```
 
-3. Installation der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
+### 3. Installation der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
 ```sh
 code  --install-extension James-Yu.latex-workshop
 ```
 
-4. LaTeX-recipe in settings.json (`~/home/.config/Code - OSS/User/settings.json`) anpassen: 
+### 4. LaTeX-recipe in settings.json (`~/home/.config/Code - OSS/User/settings.json`) anpassen: <br> 
 (Ubuntu: `~/home/.config/Code/User/settings.json`)
 
 ``` 
@@ -50,9 +54,9 @@ code  --install-extension James-Yu.latex-workshop
 }
 ``` 
 
-5. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
+### 5. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
 
-6. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
+### 6. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Je nach verwendetem System werden die Änderungen mehr oder weniger schnell live übernommen.
 _______________________
 # DHBW_LaTeX_template
 
