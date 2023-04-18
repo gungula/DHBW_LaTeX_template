@@ -3,11 +3,30 @@ Dies ist ein Template von und für DHBW-Studenten nach den aktuellen Anforderung
 Bei Fragen oder Problemen dürft ihr gern ein Issue öffnen.
 _____________________________
 # Betrieb mit angezeigter .pdf in VS Code
-1. Installation der Extension "Perl" (Language Server and Debugger for Perl)
+1. Installation von Latex auf deiner Maschine
+Eine funktionierende Latexumgebung muss auf deinem System installiert sein.
 
-2. Installation der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
+Ubuntu:
+```sh
+sudo apt install texlive texlive-bibtex-extra texlive-latex-extra texlive-science texlive-lang-german
+```
+Arch: 
+```sh
+sudo pacman -S texlive-most
+```
 
-3. LaTeX-recipe in settings.json (~/home/.config/Code - OSS/User/settings.json) anpassen: 
+2. Installation der Extension "Perl" (Language Server and Debugger for Perl)
+```sh
+code  --install-extension richterger.perl
+```
+
+3. Installation der LaTeX-Extension "LaTeX Workshop" (Doku: https://github.com/James-Yu/LaTeX-Workshop/wiki)
+```sh
+code  --install-extension James-Yu.latex-workshop
+```
+
+4. LaTeX-recipe in settings.json (`~/home/.config/Code - OSS/User/settings.json`) anpassen: 
+(Ubuntu: `~/home/.config/Code/User/settings.json`)
 
 ``` 
 {
@@ -31,9 +50,9 @@ _____________________________
 }
 ``` 
 
-4. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
+5. Ändern des Compilers zu "LaTeX Workshop" (VS Code interne Konsole - Dropdown oben rechts)
 
-5. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
+6. dokumentation.pdf kann in der seitlichen Vorschau angezeigt werden. Änderungen übernehmen mit dem grünen Dreieck (build).
 _______________________
 # DHBW_LaTeX_template
 
