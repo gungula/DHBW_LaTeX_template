@@ -348,6 +348,10 @@
 
 % Schriftart in Captions etwas kleiner
 \addtokomafont{caption}{\small}
+% Caption nur als "Abb.", nicht als "Abbildung"
+\usepackage[
+    figurename=Abb.
+]{caption}
 
 \usepackage{subfig}
 
@@ -359,6 +363,7 @@
     bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
     sortlocale=de_DE,
     style=\zitierstil,
+    sorting=none,
 ]{biblatex}
 }
 \iflang{en}{%
@@ -368,6 +373,7 @@
     bibencoding=utf8,	% wenn .bib in utf8, sonst ascii
     sortlocale=en_US,
     style=\zitierstil,
+    sorting=none,
 ]{biblatex}
 }
 
