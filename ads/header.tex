@@ -351,9 +351,16 @@
 % Schriftart in Captions etwas kleiner
 \addtokomafont{caption}{\small}
 % Caption nur als "Abb.", nicht als "Abbildung"
-\usepackage[
-    figurename=Abb.
-]{caption}
+\iflang{de}{
+    \usepackage[
+        figurename=Abb.
+    ]{caption}
+}
+\iflang{en}{
+    \usepackage[
+        figurename=Fig.
+    ]{caption}
+}
 
 \usepackage{subfig}
 
