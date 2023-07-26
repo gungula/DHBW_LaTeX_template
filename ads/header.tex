@@ -255,6 +255,7 @@
     }
     \pagestyle{plain}
     \pagenumbering{Alph}
+    \renewcommand{\thepage}{\AlphAlph{\value{page}}}
 }
 
 
@@ -299,6 +300,7 @@
 \usepackage[framed]{matlab-prettifier} % .sty-Datei muss vorhanden sein! Kann auskommentiert werden, falls keine Matlab-Listings in der Arbeit enthalten sind.
 \usepackage{color, colortbl}  % Für Highlighten der Tabellenzeilen
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage{alphalph}
 
 % eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
 % Kommentare werden rot gedruckt). Wird \% vor excludecomment{k} entfernt,
