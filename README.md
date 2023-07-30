@@ -16,7 +16,7 @@ sudo apt install texlive texlive-bibtex-extra texlive-latex-extra texlive-scienc
 ```
 Arch: 
 ```sh
-sudo pacman -S texlive-most
+sudo pacman -S texlive-most texlive-binextra
 ```
 
 ### 2. Installation der Extension "Perl" (Language Server and Debugger for Perl)
